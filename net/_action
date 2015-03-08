@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [ -z "$1" ];then
+  netctl list | sed 's:^ *::'| sed 's:^\* \(.*\):[\1]:'
+else
+  netctl $1
+fi

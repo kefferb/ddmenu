@@ -1,0 +1,9 @@
+#!/bin/bash
+
+
+#device
+  #- dev part1 LABEL1
+  #- dev part2 LABEL2
+  #- dev part3 LABEL3
+
+findmnt -l|grep '^/media'|awk '{print $1}'

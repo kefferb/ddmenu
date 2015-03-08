@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [ -z "$1" ] ;then
+  echo -e "one\ntwo\nthree"
+else
+  echo Running $1
+fi
