@@ -1,3 +1,9 @@
 #!/bin/bash
 
-  udevil umount $1
+
+if [ -b $1 ];then
+  echo "Umount all $1 filesystems"
+
+else
+  echo udevil umount $1
+fi
