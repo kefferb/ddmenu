@@ -1,9 +1,10 @@
 #!/bin/bash
 
 
+# If device is passed umount all mounts associated with it
 if [ -b $1 ];then
-  echo "Umount all $1 filesystems"
-
+  findmnt -nlo SOURCE |grep $1 | xargs -n1 udevil umount
 else
-  echo udevil umount $1
+# assume single mount point
+  udevil umount $1
 fi
