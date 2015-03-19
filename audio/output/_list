@@ -1,0 +1,1 @@
+ponymix list -t sink --short | awk '{print $3}'

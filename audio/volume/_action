@@ -1,0 +1,8 @@
+
+if [[ "$1" =~ "mute" ]]; then
+  ponymix toggle
+else
+  ponymix set-volume $1
+fi
+
+# mute  | toggle | unmute

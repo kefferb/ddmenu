@@ -1,1 +1,4 @@
+
+
+ponymix is-muted && echo unmute || echo mute
 seq 0 10 100
