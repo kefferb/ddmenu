@@ -1,1 +1,2 @@
-ponymix set-default $1
+#ponymix set-default $1
+paswitch $1
