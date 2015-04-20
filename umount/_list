@@ -10,7 +10,7 @@
 
 # awk -- add item to $2 =~ /(sd[a-z]+)[0-9]/$1/
 
-findmnt -l|grep '^/media'|
+findmnt -l|grep -E '^(/run)?/media'|
 awk '{
   sub(/[0-9]+/,"",$2);
   dev[$2]=dev[$2]"\n  "$1
