@@ -6,10 +6,6 @@
   #- dev part2 LABEL2
   #- dev part3 LABEL3
 
-#findmnt -l|grep '^/media'|awk '{print $1}'
-
-# awk -- add item to $2 =~ /(sd[a-z]+)[0-9]/$1/
-
 findmnt -l|grep -E '^(/run)?/media'|
 awk '{
   sub(/[0-9]+/,"",$2);
