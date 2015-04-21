@@ -3,5 +3,6 @@
 if [ -z "$1" ];then
   netctl list | sed 's:^ *::'| sed 's:^\* \(.*\):[\1]:'
 else
-  sudo netctl switch-to $1
+  sudo netctl switch-to $1 &&  notify-send "Connected to $1" 
+  sleep 30; sudo chronyc -a online
 fi
