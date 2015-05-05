@@ -1,0 +1,29 @@
+#!/bin/bash
+
+CONFIG=~/.config/ddmenu
+
+# On initial invocation:  ls $CONFIG
+#  if selection is a dir: use dmenu to show its contents
+#  else execute selection
+#    which could
+#    -- display more dmenu options
+#    -- execute final script
+
+# if dir contains _action then execute it w/o arguments for items
+# better to have _list and _actions ?
+# =$( ${ACTION}/_list || exit | dmenu -l 10 )  || exit
+
+ACTION=$CONFIG
+
+while [ -d $ACTION ] ;do
+  if [ -x $ACTION/_list ] ; then
+    ACTIONARG=$( ${ACTION}/_list | dmenu -l 10 )  || exit
+    ACTION=$ACTION/_action
+  else
+    ACTION=$ACTION/$( find $ACTION -maxdepth 1 -mindepth 1 \! -name dmenu_custom -printf '%f\n' | dmenu ) || exit
+  fi
+done
+
+# Handle case of _list call without actionarg - i.e. canceled dmenu listing?
+[ -x $ACTION ] && [ ! $ERR ] && echo "Calling $ACTION with $ACTIONARG"
+[ -x $ACTION ] && $ACTION $ACTIONARG
